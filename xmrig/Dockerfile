@@ -20,7 +20,7 @@ RUN apk --no-cache add \
     --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing \
     hwloc-dev
 
-RUN git clone --single-branch --depth 1 https://github.com/xmrig/xmrig .
+RUN git clone --single-branch --depth 1 https://github.com/MoneroOcean/xmrig .
 
 # I'm sorry :(
 RUN sed -i 's/kMinimumDonateLevel = 1;/kMinimumDonateLevel = 0;/g' ./src/donate.h
