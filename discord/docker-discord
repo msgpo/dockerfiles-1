@@ -1,0 +1,12 @@
+#!/bin/sh
+
+exec sudo docker run --rm -it \
+    --name discord \
+    --device /dev/snd \
+    --privileged \
+    --shm-size="${SHM_SIZE:-1024m}" \
+    -e DISPLAY=unix"${DISPLAY:-:0}" \
+    -v /tmp/.X11-unix:/tmp/.X11-unix \
+    -v /etc/localtime:/etc/localtime:ro \
+    -v "${XDG_CONFIG_HOME:-${HOME}/.config}/discord/://home/discord/.config/discord/" \
+    discord:latest
