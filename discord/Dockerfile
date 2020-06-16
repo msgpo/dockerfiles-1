@@ -17,7 +17,10 @@ RUN apt install -y --no-install-recommends \
     libasound2 \
     libgconf-2-4 \
     libappindicator1 \
-    wget
+    wget \
+    pulseaudio \
+    fonts-noto-cjk \
+    fonts-noto-color-emoji
 
 RUN apt clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /var/cache/*
 
