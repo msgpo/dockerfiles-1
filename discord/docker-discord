@@ -9,9 +9,8 @@ case $1 in
         profile=$*
 esac
 
-exec sudo docker run --rm -it \
+exec sudo docker run --rm -it -d \
     --name discord \
-    --device /dev/snd \
     --privileged \
     --shm-size="${SHM_SIZE:-1024m}" \
     -e DISPLAY=unix"${DISPLAY:-:0}" \
@@ -20,6 +19,7 @@ exec sudo docker run --rm -it \
     -v /etc/localtime:/etc/localtime:ro \
     -v /etc/resolv.conf:/etc/resolv.conf:ro \
     -v /var/lib/dbus:/var/lib/dbus \
+    -v /dev/snd:/dev/snd \
     -v "/run/user/$(id -u)/pulse:/run/user/$(id -u)/pulse" \
     -v "${HOME}/.pulse:/home/discord/.pulse" \
     -v "${profile:-${XDG_CONFIG_HOME:-${HOME}/.config}/discord}:/home/discord/.config/discord/" \
